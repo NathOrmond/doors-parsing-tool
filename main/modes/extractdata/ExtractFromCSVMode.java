@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import main.global.hci.ButtonClickEvents;
 import main.global.hci.frame.MainFrame;
 import main.modes.extractdata.createwebpage.StringFromCSV;
-import main.modes.extractdata.hci.CSVElementChooserPanel;
 import main.modes.extractdata.hci.NameHTMLFilePanel;
 import main.modes.extractdata.hci.ExtractionCompletePanel;
+import main.modes.extractdata.hci.HeadingChooserPanel;
 import main.modes.extractdata.hci.PUIDElementChooserPanel;
 import main.modes.extractdata.hci.SelectWorkingFilePanel;
 import main.modes.extractdata.importexportfiles.FileCheckMethod;
@@ -17,7 +17,7 @@ public class ExtractFromCSVMode extends DataPointer implements ActionListener {
 
 	MainFrame main;
 	SelectWorkingFilePanel selectPanel;
-	CSVElementChooserPanel csvPanel;
+	HeadingChooserPanel headingChoosePanel;
 	PUIDElementChooserPanel puidPanel;
 	NameHTMLFilePanel htmlFilePanel;
 	StringFromCSV stringCSV;
@@ -81,6 +81,8 @@ public class ExtractFromCSVMode extends DataPointer implements ActionListener {
 	 *****************************************************************************************************/
 
 	/**
+	 * 1
+	 * 
 	 * Creates select working file panel, updates the main frame 
 	 * with the panel. 
 	 * Makes this a listener of the "next" button.
@@ -93,6 +95,8 @@ public class ExtractFromCSVMode extends DataPointer implements ActionListener {
 	}
 
 	/**
+	 * 2
+	 * 
 	 * Sets the URL in and out from completed file location panel
 	 * creates file name panel and refreshes main frame with panel. 
 	 * makes this an action listener of the next step button on the panel. 
@@ -108,6 +112,8 @@ public class ExtractFromCSVMode extends DataPointer implements ActionListener {
 	}
 
 	/**
+	 * 3
+	 * 
 	 * sets the file name to text from previous pane
 	 * creates new csv element chooser panel and refreshes the frame with it
 	 * updates the headings and rows Maps based off of the read CSV file 
@@ -115,23 +121,25 @@ public class ExtractFromCSVMode extends DataPointer implements ActionListener {
 	 */
 	private void selectDesiredColumns() {
 		setFileName(htmlFilePanel.area.getText());
-		csvPanel = new CSVElementChooserPanel(getUrlIn(), getUrlOut());
-		main.updateFrame(csvPanel.getPanel());
-		setHeadingsMap(csvPanel.getHeadingsMap());
-		setRowsMap(csvPanel.getPuidMap());
-		setDescriptionsMap(csvPanel.getDescriptionsMap());
-		csvPanel.next.addActionListener(this);
-		csvPanel.next.setActionCommand(ButtonClickEvents.selectpuids);
+		headingChoosePanel = new HeadingChooserPanel(getUrlIn());
+		main.updateFrame(headingChoosePanel.getPanel());
+		setHeadingsMap(headingChoosePanel.csvParsing.getHeadingsMap());
+		setRowsMap(headingChoosePanel.csvParsing.getPuidMap());
+		setDescriptionsMap(headingChoosePanel.csvParsing.getDescriptionsMap());
+		headingChoosePanel.next.addActionListener(this);
+		headingChoosePanel.next.setActionCommand(ButtonClickEvents.selectpuids);
 	}
 
 	/**
+	 * 4
+	 * 
 	 * sets the selected columns based off of data in last panel
 	 * creates new PUID chooser panel
 	 * updates the frame with the new panel
 	 * makes this a listener for the next action command button
 	 */
 	private void selectDesiredPUIDS() {
-		setSelectedColumns(csvPanel.getSelectedColumns());
+		setSelectedColumns(headingChoosePanel.getSelectedColumns());
 		puidPanel = new PUIDElementChooserPanel(getRowsMap(), getDescriptionsMap());
 		main.updateFrame(puidPanel.getPanel());
 		puidPanel.next.addActionListener(this);
@@ -139,6 +147,8 @@ public class ExtractFromCSVMode extends DataPointer implements ActionListener {
 	}
 
 	/**
+	 * 5
+	 * 
 	 * sets the selected puids from previous panel
 	 * runs method to create web page 
 	 */

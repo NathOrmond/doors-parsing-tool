@@ -13,10 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
-import main.global.hci.frame.InstructionsPanel;
+import main.global.hci.frame.AbstractInstructionsPanel;
 import main.global.hci.frame.MainFrame;
 import main.global.runtime.RunModes;
 import main.modes.extractdata.ExtractFromCSVMode;
+import main.modes.extractdata.hci.ExtractCSVFromDoorsInstruction;
 
 
 public class HomePage extends AbstractAction implements ActionListener  {
@@ -169,7 +170,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 	private void extractInstructions(){ 
 		String resourcePath = "/resource/images/doors_screenshots/";
 		String[] files = { "null", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg" };
-		InstructionsPanel instructions = new InstructionsPanel(resourcePath, files); 
+		ExtractCSVFromDoorsInstruction instructions = new ExtractCSVFromDoorsInstruction(resourcePath, files); 
 		instructions.finishedButton.addActionListener(this);
 		frame.updateFrame(instructions.getPanel());
 		frame.pack();

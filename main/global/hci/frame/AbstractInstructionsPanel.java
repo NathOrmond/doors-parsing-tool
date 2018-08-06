@@ -22,7 +22,7 @@ import main.global.runtime.RunModes;
 
 
 
-public class InstructionsPanel extends JPanel implements ActionListener {
+public abstract class AbstractInstructionsPanel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private static String[] files;
@@ -43,7 +43,7 @@ public class InstructionsPanel extends JPanel implements ActionListener {
 	 * Initialisation
 	 ********************************/
 	
-	public InstructionsPanel(String resourcePath, String[] files) {
+	public AbstractInstructionsPanel(String resourcePath, String[] files) {
 		this.files = files;
 		fileMaxNum = files.length - 1;
 		this.resourcePath = resourcePath;
