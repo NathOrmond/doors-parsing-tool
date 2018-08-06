@@ -18,9 +18,13 @@ public class MainMenuBar {
 	 */
 	
 	private JMenuBar mb;
-	private JMenu navigate, instructions;
+	
+	private JMenu navigate;
+	public JMenuItem extract, serve, commit, home;
 	private List<JMenuItem> navigateItems;
-	public JMenuItem extract, serve, commit, extractInstructions, home;
+	
+	public JMenu instructions;
+	public JMenuItem doorsToCSVExtractInstructions, csvToWebPageInstructions;
 	
 	public MainMenuBar() {
 		mb = new JMenuBar();
@@ -62,9 +66,14 @@ public class MainMenuBar {
 	private void setInstructions(){ 
 		/** Navigates between instructions**/
 		instructions = new JMenu("Instructions");
-		extractInstructions = new JMenuItem("Extraction Instructions");
-		extractInstructions.setActionCommand(RunModes.extract_instructions);
-		instructions.add(extractInstructions);
+		
+		doorsToCSVExtractInstructions = new JMenuItem("How do I convert a DOORS database to CSV?");
+		doorsToCSVExtractInstructions.setActionCommand(RunModes.doors_to_csv_extract_instructions);
+		instructions.add(doorsToCSVExtractInstructions);
+		
+		csvToWebPageInstructions = new JMenuItem("How do I use the \"Extract\" tool to create a web page from my DOORS CSV?");
+		csvToWebPageInstructions.setActionCommand(RunModes.csv_to_webpage_instructions);
+		instructions.add(csvToWebPageInstructions);
 	}
 
 	private void addItemsToMenu(JMenu menu, List<JMenuItem> items) {

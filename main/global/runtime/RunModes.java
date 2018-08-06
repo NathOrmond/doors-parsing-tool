@@ -7,6 +7,7 @@ public abstract class RunModes {
 								commit_mode = "commit",
 								home = "home", 
 								debug_mode = "debug", 
-								extract_instructions = "extr_instr";
+								doors_to_csv_extract_instructions = "extr_instr1",
+								csv_to_webpage_instructions = "extr_instr2";
 
 }

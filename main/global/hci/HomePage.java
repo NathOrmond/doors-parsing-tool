@@ -17,6 +17,7 @@ import main.global.hci.frame.AbstractInstructionsPanel;
 import main.global.hci.frame.MainFrame;
 import main.global.runtime.RunModes;
 import main.modes.extractdata.ExtractFromCSVMode;
+import main.modes.extractdata.hci.CreateWebPageFromCSVInstructions;
 import main.modes.extractdata.hci.ExtractCSVFromDoorsInstruction;
 
 
@@ -42,7 +43,8 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		frame.mb.commit.addActionListener(this);
 		frame.mb.serve.addActionListener(this);
 		frame.mb.home.addActionListener(this);
-		frame.mb.extractInstructions.addActionListener(this);
+		frame.mb.doorsToCSVExtractInstructions.addActionListener(this);
+		frame.mb.csvToWebPageInstructions.addActionListener(this);
 	}
 
 	public JPanel homePanel() {
@@ -137,8 +139,12 @@ public class HomePage extends AbstractAction implements ActionListener  {
 			home();
 			break;
 			
-		case RunModes.extract_instructions: 
-			extractInstructions();
+		case RunModes.doors_to_csv_extract_instructions: 
+			extractInstructions1();
+			break;
+			
+		case RunModes.csv_to_webpage_instructions: 
+			extractInstructions2();
 			break;
 
 		default:
@@ -167,10 +173,19 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		frame.updateFrame(homePanel());
 	}
 	
-	private void extractInstructions(){ 
+	private void extractInstructions1(){ 
 		String resourcePath = "/resource/images/doors_screenshots/";
-		String[] files = { "null", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg" };
+		String[] files = { "null", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg" };
 		ExtractCSVFromDoorsInstruction instructions = new ExtractCSVFromDoorsInstruction(resourcePath, files); 
+		instructions.finishedButton.addActionListener(this);
+		frame.updateFrame(instructions.getPanel());
+		frame.pack();
+	}
+	
+	private void extractInstructions2(){
+		String resourcePath = "/resource/images/extract_screenshots/";
+		String[] files = { "null", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"};
+		CreateWebPageFromCSVInstructions instructions = new CreateWebPageFromCSVInstructions(resourcePath, files); 
 		instructions.finishedButton.addActionListener(this);
 		frame.updateFrame(instructions.getPanel());
 		frame.pack();
