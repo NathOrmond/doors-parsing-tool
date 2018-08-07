@@ -23,7 +23,7 @@ public class HtmlStrings {
 	}
 
 	public String tableOpen() {
-		return "<div style=\"overflow-x:auto;\"><table align=\"left\" style = \"width:100%\">";
+		return "<div style=\"overflow-x:auto;\"><table>";
 	}
 
 	public String tableClose() {
@@ -34,7 +34,7 @@ public class HtmlStrings {
 		return "</html>";
 	}
 
-	public String tableRowOpen() {
+	public String tableRowOpen( ) {
 		return "<tr>";
 	}
 
@@ -53,36 +53,49 @@ public class HtmlStrings {
 	public String paragraph(String paragraph) {
 		return "<p>" + paragraph + "</p>";
 	}
+	
+	public String h2(String content) { 
+		return "<h2  align=\"center\" style = \"width:100%\">" + content + "</h2><br>";
+	}
 
 	public String tableTrueFalseDropDown(String selectedStr) {
 
 		String returnString, tempString, optionsString;
 		List<String> strs = new ArrayList<String>();
-		tempString = "<select>";
+		tempString = "<select id = \"select\" onchange=\"setColor()\">";
+		
 		switch (selectedStr) {
 		case "Pass":
-			strs.add("Pass");
-			strs.add("None");
-			strs.add("Fail");
+			strs.add(option("green", "pass", true));
+			strs.add(option("red", "fail", false));
+			strs.add(option("blue", "none", false));
 			break;
 		case "Fail":
-			strs.add("Fail");
-			strs.add("None");
-			strs.add("Pass");
+			strs.add(option("green", "pass", false));
+			strs.add(option("red", "fail", true));
+			strs.add(option("blue", "none", false));
 			break;
+			
 		default:
-			strs.add("None");
-			strs.add("Pass");
-			strs.add("Fail");
+			strs.add(option("green", "pass", false));
+			strs.add(option("red", "fail", false));
+			strs.add(option("blue", "none", true));
 			break;
 		}
+		
 		optionsString = "";
 		for (String str : strs) {
-			optionsString = optionsString + "<option value=\"" + str + "\">" + str + "</option>";
+			optionsString = optionsString + str ;
 		}
+		
+		
 		tempString = tempString + optionsString + "</select>";
-		returnString = "<td align=\"center\" id=\"dropdown\">" + tempString + "</td>";
+		returnString = "<td align=\"center\" id=\"dropdownTableData\">" + tempString + "</td>";
 		return returnString;
+	}
+	
+	public String option(String value, String content, boolean isSelected) { 
+		return isSelected ? "<option value=\""+value+"\" selected=\"selected\">" +content+ "</option>" :  "<option value=\""+value+"\">" +content+ "</option>";
 	}
 
 }

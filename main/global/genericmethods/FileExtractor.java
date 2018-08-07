@@ -1,4 +1,4 @@
-package main.modes.extractdata.createwebpage;
+package main.global.genericmethods;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class TextFileStrings {
+public class FileExtractor {
 
 	BufferedReader br;
 
-	public TextFileStrings() {
+	public FileExtractor() {
 	}
 
 	public String readResourceTxtToString(String url) throws IOException {

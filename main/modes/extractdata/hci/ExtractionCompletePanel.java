@@ -16,6 +16,7 @@ import javax.swing.border.TitledBorder;
 
 public class ExtractionCompletePanel extends JPanel implements ActionListener{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel title;
 	private JTextArea tArea;
 	public JButton copy;
@@ -33,7 +34,7 @@ public class ExtractionCompletePanel extends JPanel implements ActionListener{
 		tArea = new JTextArea(this.url);
 		tArea.setEditable(false);
 		copy = new JButton("copy");
-		copy.setActionCommand(url);
+		copy.setActionCommand(this.url);
 		copy.addActionListener(this);
 		createPanel();
 	}

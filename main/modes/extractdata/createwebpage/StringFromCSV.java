@@ -47,7 +47,9 @@ public class StringFromCSV {
 	private void createWebPage() throws IOException {
 		stringsForWriting.add(html.header("Secure HTML Test Software for DOORS", css.cssString(), js.linkToJQuery()));
 		stringsForWriting.add(html.bodyOpen());
-		stringsForWriting.add(html.paragraph(instructionParagraph()));
+		stringsForWriting.add(html.h2(instructionHeading()));
+		stringsForWriting.add(html.h2(instructions1()));
+		stringsForWriting.add(html.h2(instructions2()));
 		stringsForWriting.add(html.tableOpen());
 		wrapContentsInHTML(extractRequiredData());
 		stringsForWriting.add(html.tableClose());
@@ -55,6 +57,20 @@ public class StringFromCSV {
 		stringsForWriting.add(html.bodyClose());
 		stringsForWriting.add(html.footer());
 		file.writeFile(stringsForWriting);
+	}
+	
+	
+	private String instructionHeading() {
+		return "Instructions: ";
+				
+	}
+	
+	private String instructions1() { 
+		return "i) After editing a cell (by clicking on it and typing) hit return to finish editing.";
+	}
+	
+	private String instructions2() { 
+		return "ii) When finished editing press \"ctrl + s\" to save the edited html file.";
 	}
 
 	/**
@@ -163,16 +179,6 @@ public class StringFromCSV {
 		return strs;
 	}
 
-	/**
-	 * instructions for the web page
-	 * written to top of the page
-	 * @return
-	 */
-	private String instructionParagraph() {
-		return "Instructions: " + 
-				"i) After editing a cell (by clicking on it and typing) hit return to finish editing"+ 
-				"ii) When finished editing press \"ctrl + s\" to save the edited html file.";
-	}
 
 	
 	/***********************************************

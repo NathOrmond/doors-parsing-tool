@@ -3,11 +3,10 @@ package main.modes.server.server.pages;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import main.global.genericmethods.FileExtractor;
 
-import main.modes.extractdata.createwebpage.TextFileStrings;
 
 public class HttpRequestHandler implements HttpHandler {
 
@@ -32,7 +31,7 @@ public class HttpRequestHandler implements HttpHandler {
 	 */
 	private String output() throws IOException {
 		
-		TextFileStrings tfs = new TextFileStrings();
+		FileExtractor tfs = new FileExtractor();
 		return  tfs.readResourceTxtToString(file);
 	}
 
