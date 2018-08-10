@@ -29,11 +29,12 @@ public class Server {
 
 		try {
 			this.server = HttpServer.create(new InetSocketAddress(iPort), 0);
-			this.server.createContext("/doorstool", new HttpRequestHandler(file));
-//			this.server.createContext("/stations", new HttpStationsRequestHandler());
+			this.server.createContext("/" + file, new HttpRequestHandler(file));
 			this.server.setExecutor(null);
 			this.server.start();
 			result = true;
+			
+			System.out.println("Server started on localhost:" + iPort + "/" + file);
 		} catch (IOException e) {
 			e.printStackTrace();
 			result = false;

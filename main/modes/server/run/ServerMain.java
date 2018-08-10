@@ -6,30 +6,21 @@ public class ServerMain implements Runnable {
 
 	private static Server srv;
 	static int openPort;
-	private static String file;
+	String file;
 	
-	public ServerMain(String file) {
-	ServerMain.file = file;
+	
+	public ServerMain(String file, int port) {
+	this.openPort = port;	
+	this.file = file;
 	}
 
 	/**
 	 * Attempts to start server prints a successful or unsuccessful attempt
 	 */
-	private static void startServer() {
-		int port = 8080;
+	public void startServer() {
 		srv = new Server(file);
 		boolean blResult = false;
-
-		while (!blResult) {
-			blResult = srv.open(port);
-			if (blResult) {
-				System.out.println("server started on " + port);
-				openPort = port;
-			} else {
-				port++;
-				System.out.println("server start error");
-			}
-		}
+		blResult = srv.open(openPort);	
 	} 
 	
 	private static void stopServer(){ 

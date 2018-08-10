@@ -18,6 +18,7 @@ import main.global.runtime.RunModes;
 import main.modes.extractdata.ExtractFromCSVMode;
 import main.modes.extractdata.hci.CreateWebPageFromCSVInstructions;
 import main.modes.extractdata.hci.ExtractCSVFromDoorsInstruction;
+import main.modes.server.hci.ServerPanel;
 
 
 public class HomePage extends AbstractAction implements ActionListener  {
@@ -29,6 +30,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 	private GridBagLayout mgr;
 	private GridBagConstraints gbc;
 	private int buttonSizeY = 40, buttonSizeX = 30;
+	private ServerPanel srv;
 
 	public HomePage() {
 		mgr = new GridBagLayout();
@@ -71,6 +73,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		gbc.ipady = buttonSizeY;
 		gbc.ipadx = buttonSizeX;
 		addComponentToPanel(panel, extractModeB, 1, 1);
+		extractModeB.setEnabled(true);
 
 		serveModeB = new JButton("Serve");
 		serveModeB.setActionCommand(RunModes.serve_mode);
@@ -80,7 +83,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		gbc.ipady = buttonSizeY;
 		gbc.ipadx = buttonSizeX;
 		addComponentToPanel(panel, serveModeB, 2, 1);
-		serveModeB.setEnabled(false);
+		serveModeB.setEnabled(false);		/**not yet implemented**/
 
 		commitModeB = new JButton("Commit");
 		commitModeB.setActionCommand(RunModes.serve_mode);
@@ -90,7 +93,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.ipady = buttonSizeY;
 		gbc.ipadx = buttonSizeX;
-		commitModeB.setEnabled(false);
+		commitModeB.setEnabled(false);		/**not yet implemented**/
 
 		panel.setBorder(new TitledBorder("Home"));
 		return panel;
@@ -161,7 +164,9 @@ public class HomePage extends AbstractAction implements ActionListener  {
 	}
 	
 	private void serveMode(){ 
-		
+		srv = new ServerPanel();
+		frame.updateFrame(srv.getPanel());
+		frame.setResizable(true);
 	}
 	
 	private void commitMode(){ 

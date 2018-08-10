@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
 import main.global.hci.ButtonClickEvents;
-import main.modes.extractdata.importexportfiles.FileChooser;
+import main.global.hci.FileChooser;
 
 
 
