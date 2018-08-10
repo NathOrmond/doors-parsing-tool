@@ -1,6 +1,10 @@
-window.onbeforeunload = function () {
+	window.onload = setAllColors();
+
+	window.onbeforeunload = function () {
      return 'Save changes before quitting session (ctrl + s)';
 	};
+
+
 
 	$(function () {
 
@@ -44,19 +48,19 @@ window.onbeforeunload = function () {
 				inputObj.click(function(){
 					return false;
 				});
-		}
+		    }
 		});
+}	);
+	
 
-	var selectElements = document.getElementById('tableID').getElementsByTagName('select')
-	for (var i = 0; i < selectElements.length; i++) {
-	    setColor(selectElements[i]);
+	function setAllColors(){
+		var selectElements = document.getElementById('data-table').getElementsByTagName('select');
+		for (var i = 0; i < selectElements.length; i++) {
+		    setColor(selectElements[i]);
+		}
 	}
 
-});
 	
-
-	
-	setColor = function(element) {
+	function setColor(element) {
 	    element.parentNode.style.backgroundColor = element.options[element.selectedIndex].value;
 	}
-	
