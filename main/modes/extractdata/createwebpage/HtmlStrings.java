@@ -23,7 +23,7 @@ public class HtmlStrings {
 	}
 
 	public String tableOpen() {
-		return "<div style=\"overflow-x:auto;\"><table>";
+		return "<div style=\"overflow-x:auto  id=\"data-table\"><table>";
 	}
 
 	public String tableClose() {
@@ -62,7 +62,7 @@ public class HtmlStrings {
 
 		String returnString, tempString, optionsString;
 		List<String> strs = new ArrayList<String>();
-		tempString = "<select id = \"select\" onchange=\"setColor()\">";
+		tempString = "<select id = \"select\" onchange=\"setColor(this)\">";
 		
 		switch (selectedStr) {
 		case "Pass":

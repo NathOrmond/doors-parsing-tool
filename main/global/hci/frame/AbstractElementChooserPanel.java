@@ -41,7 +41,7 @@ public abstract class AbstractElementChooserPanel extends JPanel {
 	}
 	
 	private void addAllElementsToPanel() { 
-		gbc.anchor = gbc.NORTH;
+		gbc.anchor = GridBagConstraints.NORTH;
 		addComponentToPanel(label, 0, 0);
 		addComponentToPanel(new JScrollPane(list), 0, 1);
 		addComponentToPanel(next, 0, 2);

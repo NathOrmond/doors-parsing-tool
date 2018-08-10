@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
-import main.global.hci.frame.AbstractInstructionsPanel;
 import main.global.hci.frame.MainFrame;
 import main.global.runtime.RunModes;
 import main.modes.extractdata.ExtractFromCSVMode;
@@ -61,14 +60,14 @@ public class HomePage extends AbstractAction implements ActionListener  {
 											+ "Select an option from the menu"); 
 		description.setBackground(new Color(220, 220, 220));
 		description.setEditable(false);
-		gbc.anchor = gbc.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		addComponentToPanel(panel, description, 0, 1);
 
 		extractModeB = new JButton("Extract");
 		extractModeB.setActionCommand(RunModes.extract_mode);
 		extractModeB.addActionListener(this);
 		extractModeB.setToolTipText("Convert DOORS CSV to an interactive web page");
-		gbc.anchor = gbc.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.ipady = buttonSizeY;
 		gbc.ipadx = buttonSizeX;
 		addComponentToPanel(panel, extractModeB, 1, 1);
@@ -77,7 +76,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		serveModeB.setActionCommand(RunModes.serve_mode);
 		serveModeB.addActionListener(this);
 		serveModeB.setToolTipText("Serve a created Web Page *NOT YET IMPLEMENTED*");
-		gbc.anchor = gbc.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.ipady = buttonSizeY;
 		gbc.ipadx = buttonSizeX;
 		addComponentToPanel(panel, serveModeB, 2, 1);
@@ -88,7 +87,7 @@ public class HomePage extends AbstractAction implements ActionListener  {
 		commitModeB.addActionListener(this);
 		commitModeB.setToolTipText("Commit database changes to DOORS *NOT YET IMPLEMENTED*");
 		addComponentToPanel(panel, commitModeB, 3, 1);
-		gbc.anchor = gbc.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.ipady = buttonSizeY;
 		gbc.ipadx = buttonSizeX;
 		commitModeB.setEnabled(false);

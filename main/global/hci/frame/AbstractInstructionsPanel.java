@@ -44,7 +44,7 @@ public abstract class AbstractInstructionsPanel extends JPanel implements Action
 	 ********************************/
 	
 	public AbstractInstructionsPanel(String resourcePath, String[] files) {
-		this.files = files;
+		AbstractInstructionsPanel.files = files;
 		fileMaxNum = files.length - 1;
 		this.resourcePath = resourcePath;
 		mgr = new GridBagLayout();
@@ -86,19 +86,19 @@ public abstract class AbstractInstructionsPanel extends JPanel implements Action
 		addComponentToPanel(picLabel, 0, 0);
 		
 			/** Adds previous button to panel **/
-			gbc.anchor = gbc.FIRST_LINE_END;
+			gbc.anchor = GridBagConstraints.FIRST_LINE_END;
 			addComponentToPanel(prevButton, 1, 0);
 			prevButton.setActionCommand(fileMap.get(getPrevActionCommand()));
 			prevButton.setEnabled(getKeysByValue(fileMap, file) > 1);
 			
 			/** Adds next button to nextButton **/
-			gbc.anchor = gbc.FIRST_LINE_START;
+			gbc.anchor = GridBagConstraints.FIRST_LINE_START;
 			addComponentToPanel(nextButton, 2, 0);
 			nextButton.setActionCommand(fileMap.get(getNextActionCommand()));
 			nextButton.setEnabled(getKeysByValue(fileMap, file) < fileMaxNum );
 			
 		/** Adds finished button to panel **/
-		gbc.anchor = gbc.CENTER;
+		gbc.anchor = GridBagConstraints.CENTER;
 		addComponentToPanel(finishedButton,0, 1);
 		
 		repaint();

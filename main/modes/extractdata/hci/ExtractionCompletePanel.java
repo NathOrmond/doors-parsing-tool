@@ -42,15 +42,15 @@ public class ExtractionCompletePanel extends JPanel implements ActionListener{
 	private void createPanel(){ 
 		
 		/** Adds title to panel **/
-		gbc.anchor = gbc.FIRST_LINE_START;
+		gbc.anchor = GridBagConstraints.FIRST_LINE_START;
 		addComponentToPanel(title, 0, 0);
 		
 		/** Adds visible url textArea to panel **/
-		gbc.anchor = gbc.FIRST_LINE_START;
+		gbc.anchor = GridBagConstraints.FIRST_LINE_START;
 		addComponentToPanel(tArea,0,1);
 		
 		/** Adds copy button to panel **/
-		gbc.anchor = gbc.FIRST_LINE_START;
+		gbc.anchor = GridBagConstraints.FIRST_LINE_START;
 		addComponentToPanel(copy,1,1);
 		
 	}

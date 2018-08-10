@@ -1,13 +1,8 @@
-	window.onbeforeunload = function () {
-     return 'Save changes before quitting session (ctrl + s)';
-	};
-
-		window.onbeforeunload = function () {
+window.onbeforeunload = function () {
      return 'Save changes before quitting session (ctrl + s)';
 	};
 
 	$(function () {
-		
 
 		$("td").click(function (event){
 			var tdObj = $(this);
@@ -52,9 +47,16 @@
 		}
 		});
 
+	var selectElements = document.getElementById('tableID').getElementsByTagName('select')
+	for (var i = 0; i < selectElements.length; i++) {
+	    setColor(selectElements[i]);
+	}
+
 });
 	
-	setColor = function() {
-	     var e = document.getElementById("select");
-	     e.style.backgroundColor = e.options[e.selectedIndex].value;
-	  }
+
+	
+	setColor = function(element) {
+	    element.parentNode.style.backgroundColor = element.options[element.selectedIndex].value;
+	}
+	

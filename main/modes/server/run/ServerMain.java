@@ -9,7 +9,7 @@ public class ServerMain implements Runnable {
 	private static String file;
 	
 	public ServerMain(String file) {
-	this.file = file;
+	ServerMain.file = file;
 	}
 
 	/**

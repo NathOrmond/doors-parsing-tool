@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
-import main.global.hci.ButtonClickEvents;
 import main.modes.extractdata.DataPointer;
 
 

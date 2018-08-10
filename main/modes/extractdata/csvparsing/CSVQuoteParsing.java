@@ -132,7 +132,7 @@ public class CSVQuoteParsing {
 	 * @return boolean
 	 */
 	private boolean isCharQuote(char c) {
-		return ((int) c == 34);
+		return (c == 34);
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class CSVQuoteParsing {
 	 * @return boolean
 	 */
 	public boolean isCharComma(char c) {
-		return ((int) c == 44);
+		return (c == 44);
 	}
 
 	/**
